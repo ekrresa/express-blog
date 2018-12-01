@@ -1,0 +1,38 @@
+extends dashboard.pug
+
+block content
+  .container
+    .card.card-register.mx-auto.mt-5
+      .card-header Register an Account
+      .card-body
+        form
+          .form-group
+            .form-row
+              .col-md-6
+                .form-label-group
+                  input.form-control#firstName(type="text" placeholder="First name" required autofocus)
+                  label(for="firstName") First name
+
+              .col-md-6
+                .form-label-group
+                  input.form-control#lastName(type="text" placeholder="Last name" required)
+                  label(for="lastName") Last name
+          .form-group
+            .form-label-group
+              input.form-control#inputEmail(type="email" placeholder="Email address" required)
+              label(for="inputEmail") Email address
+          .form-group
+            .form-row
+              .col-md-6
+                .form-label-group
+                  input.form-control#inputPassword(type="password" placeholder="Password" required)
+                  label(for="inputPassword") Password
+              .col-md-6
+                .form-label-group
+                  input.form-control#confirmPassword(type="password" placeholder="Confirm password" required)
+                  label(for="confirmPassword") Confirm password
+          a.btn.btn-primary.btn-block(href="login.html") Register
+
+        .text-center
+          a.d-block.small.mt-3(href="login.html") Login Page
+          a.d-block.small(href="forgot-password.html") Forgot Password
