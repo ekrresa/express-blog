@@ -1,0 +1,168 @@
+header {
+  background: url(/images/bg2.jpg) center;
+  background-size: cover;
+  padding-bottom: 5rem;
+  margin-bottom: 2rem;
+}
+
+.jumbotron {
+  background: none;
+  color: #ffffff;
+}
+
+.site-header {
+  color: #ffffff;
+  margin-top: 2rem;
+}
+
+.navbar {
+  padding: 0.5rem 0rem;
+}
+
+ul.navbar-nav {
+  align-items: center;
+}
+
+ul.navbar-nav:first-child {
+  color: #ffffff;
+}
+
+.navbar-brand {
+  display: none;
+}
+
+.nav-link {
+  margin-right: 0.5rem;
+}
+
+.contact .navbar .nav-item:last-child .nav-link {
+  margin-right: 0;
+}
+
+.navbar-brand,
+a.nav-link {
+  color: #ffffff !important;
+}
+
+a.nav-link:hover {
+  color: #ffffff6b !important;
+}
+
+.card {
+  border: none;
+}
+
+.card-body {
+  padding: 0;
+}
+
+article img {
+  width: 100%;
+  height: 205px;
+}
+
+.row .bg-dark,
+aside .bg-dark {
+  height: 250px;
+  font-size: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.main-ad {
+  display: flex;
+  height: 250px;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+}
+
+.form-control:focus {
+  box-shadow: none;
+}
+
+.fa {
+  font-size: 1.25rem;
+}
+.fa-twitter-square {
+  color: #38a1f3;
+}
+.fa-facebook-square {
+  color: #4267b2;
+}
+.fa-instagram {
+  color: #d93175;
+}
+.fa-phone {
+  font-size: 1rem;
+}
+
+footer {
+  background-color: #231a06e8;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+footer p {
+  margin-bottom: 2px;
+}
+
+footer p a {
+  color: #ffffff;
+}
+
+footer p a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+.footer-nav li {
+  margin-right: 1rem;
+}
+
+.list-inline:first-child {
+  font-weight: 600;
+}
+
+@media screen and (max-width: 768px) {
+  header {
+    padding-bottom: 0;
+  }
+  p.lead {
+    text-align: center;
+  }
+  .contact ul li {
+    display: none;
+  }
+  ul.navbar-nav {
+    align-items: flex-start;
+    padding-top: 1rem;
+  }
+  .navbar-toggler:focus,
+  .navbar-toggler:hover {
+    text-decoration: none;
+    outline: 0;
+  }
+  .navbar-light .navbar-toggler {
+    border: 1.5px solid rgb(151, 144, 144);
+  }
+
+  .navbar {
+    justify-content: flex-end;
+  }
+  .navbar-brand {
+    display: inline-block;
+    margin-right: auto;
+  }
+
+  .site-header {
+    display: none;
+  }
+}
