@@ -1,0 +1,37 @@
+extends dashboard.pug
+
+block content
+  .container
+    h1.text-center.mt-3 New Post
+    
+    .bg-light.p-4
+      form
+        .form-group.row
+          label.col-sm-2.col-form-label(for="postTitle") Title
+          .col-sm-6
+            input.form-control#postTitle(type="text" name="title")
+
+        .form-group.row
+          label.col-sm-2.col-form-label(for="category") Category
+          .col-sm-6
+            select.form-control#category(name="category")
+              
+        .form-group.row
+          label.col-sm-2.col-form-label(for="postBody") Body
+          .col-sm-8
+            textarea.form-control#postBody(name="body" rows="5")
+
+        .form-group.row
+          label.col-sm-2.col-form-label(for="postImage") Post Image
+          .col-sm-3
+            input.form-control-file#postImage(name="postImage" type="file")
+
+        .form-group.row
+          label.col-sm-2.col-form-label(for="author") Author
+          .col-sm-6
+            select.form-control#author(name="author")
+        .row
+          .col-sm-2
+          .col-sm-8
+            button.btn.btn-primary(type="submit" name="submit") Save
+
