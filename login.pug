@@ -1,0 +1,25 @@
+extends dashboard.pug
+
+block content
+  .container
+    .card.card-login.mx-auto.mt-5.bg-light
+      .card-header Login
+      .card-body
+        form
+          .form-group
+            .form-label-group
+              input.form-control#inputEmail(type="email" placeholder="Email address" required autofocus)
+              label(for="inputEmail") Email address
+          .form-group
+            .form-label-group
+              input.form-control#inputPassword(type="password" placeholder="Password" required="required")
+              label(for="inputPassword") Password
+          .form-group
+            .checkbox
+              label Remember Password
+                input(type="checkbox" value="remember-me")
+          a.btn.btn-primary.btn-block(href="index.html") Login
+
+        .text-center
+          a.d-block.small.mt-3(href="register.html") Register an Account
+          a.d-block.small(href="forgot-password.html") Forgot Password?
