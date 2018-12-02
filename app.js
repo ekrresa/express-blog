@@ -1,4 +1,5 @@
 const express = require("express");
+const path = require("path");
 const mongoose = require("mongoose");
 const posts = require("./routes/posts");
 const index = require("./routes/index");
@@ -13,7 +14,7 @@ mongoose
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(express.static(__dirname, "public"));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", index);
 app.use("/posts", posts);
