@@ -1,8 +1,11 @@
 const mongoose = require("mongoose");
 
-const postSchema = new mongoose.Schema({
-  name: String
+const CategorySchema = new mongoose.Schema({
+  name: {
+    type: String,
+    required: true
+  }
 });
 
-const Post = mongoose.model("Post", postSchema);
-module.exports = Post;
+const Category = mongoose.model("Category", CategorySchema);
+module.exports = Category;

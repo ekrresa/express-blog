@@ -9,8 +9,8 @@ const PostSchema = new mongoose.Schema({
   thumbnail: String,
   category: String,
   url: String,
-  published: Date,
-  updated: Date
+  published: { type: Date, default: Date.now() },
+  updated: { type: Date, default: Date.now() }
 });
 
 PostSchema.virtual("timeline").get(function() {
@@ -22,5 +22,4 @@ PostSchema.virtual("timeline").get(function() {
   } by ${this.author} on ${month} ${day}, ${year}`;
 });
 
-const Post = mongoose.model("Post", PostSchema);
-module.exports = Post;
+module.exports = mongoose.model("Post", PostSchema);

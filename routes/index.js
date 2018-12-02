@@ -4,8 +4,11 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const posts = await Post.find().limit(10);
+  const post1 = posts.slice(0, 3);
+  const post2 = posts.slice(3, 10);
   res.render("index", {
-    posts,
+    post1,
+    post2,
     pageNumber: 1
   });
 });

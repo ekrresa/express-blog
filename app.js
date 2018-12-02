@@ -3,6 +3,7 @@ const path = require("path");
 require("./db");
 const posts = require("./routes/posts");
 const index = require("./routes/index");
+const category = require("./routes/category");
 const app = express();
 
 app.set("view engine", "pug");
@@ -13,5 +14,6 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/", index);
 app.use("/blog", posts);
+app.use("/admin", category);
 
 app.listen(3000, () => console.log("listening on port 3000"));
