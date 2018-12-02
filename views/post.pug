@@ -7,7 +7,7 @@ html
     meta(name="viewport" content="width=device-width, initial-scale=1")
     link(rel="stylesheet" media="screen" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css")
     link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
-    link(rel="stylesheet", href="./main.css")
+    link(rel="stylesheet", href="/stylesheets/main.css")
     link(href="https://fonts.googleapis.com/css?family=Poppins:400,600,700"
       rel="stylesheet")
   body
@@ -55,15 +55,12 @@ html
     section.container.mb-4
       .row
         .col-sm-12.col-md-8.border-right
-          article
-            h1.display-4.text-center Smallholder Farmers to enjoy Improved Livelihood — Ogbeh
-            p.text-center.text-muted.font-weight-light Posted by Odogbor Fejiro on November 26, 2018
+          if post
+            article
+              h1.text-center=post.title
+              p.text-center.text-muted.font-weight-light Posted by Odogbor Fejiro on November 26, 2018
 
-            p. 
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus accusamus doloremque accusantium numquam, sit pariatur hic quae perspiciatis autem eveniet placeat illum in ratione amet impedit architecto quibusdam, nemo quas. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, odit ea. Et accusantium quaerat harum praesentium sit suscipit, officiis quibusdam, omnis repudiandae itaque perspiciatis, aliquid cumque? Dolore ab officia animi. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non tenetur facere eius iusto, harum expedita aperiam numquam maiores necessitatibus similique fuga ratione modi consequuntur doloribus quae aliquid beatae reprehenderit quis.
-            
-            p. 
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Minus accusamus doloremque accusantium numquam, sit pariatur hic quae perspiciatis autem eveniet placeat illum in ratione amet impedit architecto quibusdam, nemo quas. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nostrum, odit ea. Et accusantium quaerat harum praesentium sit suscipit, officiis quibusdam, omnis repudiandae itaque perspiciatis, aliquid cumque? Dolore ab officia animi. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Non tenetur facere eius iusto, harum expedita aperiam numquam maiores necessitatibus similique fuga ratione modi consequuntur doloribus quae aliquid beatae reprehenderit quis.
+              != post.content
 
           .row.mb-3
             .col-sm-12
@@ -94,7 +91,7 @@ html
                 .row
                   .col-sm-12
                     .pl-1.pt-1
-                      img(src="post-img.jpg" alt="image of post" class="img-fluid")
+                      img(src="/images/post-img.jpg" alt="image of post" class="img-fluid")
                   .col-sm-12
                     .card-body.pl-1
                       h6 Smallholder Farmers to enjoy Improved Livelihood — Ogbeh
@@ -103,7 +100,7 @@ html
                 .row
                   .col-sm-12
                     .pl-1.pt-1
-                      img(src="post-img.jpg" alt="image of post" class="img-fluid")
+                      img(src="/images/post-img.jpg" alt="image of post" class="img-fluid")
                   .col-sm-12
                     .card-body.pl-1
                       h6 Smallholder Farmers to enjoy Improved Livelihood — Ogbeh
@@ -112,7 +109,7 @@ html
                 .row
                   .col-sm-12
                     .pl-1.pt-1
-                      img(src="post-img.jpg" alt="image of post" class="img-fluid")
+                      img(src="/images/post-img.jpg" alt="image of post" class="img-fluid")
                   .col-sm-12
                     .card-body.pl-1
                       h6 Smallholder Farmers to enjoy Improved Livelihood — Ogbeh
@@ -121,7 +118,7 @@ html
                 .row
                   .col-sm-12
                     .pl-1.pt-1
-                      img(src="post-img.jpg" alt="image of post" class="img-fluid")
+                      img(src="/images/post-img.jpg" alt="image of post" class="img-fluid")
                   .col-sm-12
                     .card-body.pl-1
                       h6 Smallholder Farmers to enjoy Improved Livelihood — Ogbeh

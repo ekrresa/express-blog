@@ -82,7 +82,7 @@ html
                     .card-body.pl-1
                       h4.card-title= post.title
                       p.card-subtitle.mb-2.text-muted Posted by #{post.author} on #{post.published}
-                      a.btn.bg-info.text-white Read more...
+                      a.btn.bg-info.text-white(href=`/posts/post/${post.title}`) Read more...
 
           .row.mb-3
               .col-sm-12
@@ -100,7 +100,7 @@ html
                     .card-body.pl-1
                       h4.card-title= post.title
                       p.card-subtitle.mb-2.text-muted Posted by #{post.author} on #{post.published}
-                      a.btn.bg-info.text-white Read more...
+                      a.btn.bg-info.text-white(href=`/posts/post/${post.title}`) Read more...
           - let nextPage = Number(pageNumber + 1)
           .row
             if pageNumber > 1
