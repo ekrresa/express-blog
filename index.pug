@@ -1,0 +1,60 @@
+extends dashboard.pug
+
+block content
+  #content-wrapper
+    .container-fluid
+
+      //- <!-- Breadcrumbs -->
+      ol.breadcrumb
+        li.breadcrumb-item
+          a(href="#") Dashboard
+        li.breadcrumb-item.active Overview
+
+      //- <!-- Icon Cards -->
+      .row
+        .col-xl-3.col-sm-6.mb-3
+          .card.text-white.bg-primary.o-hidden.h-100
+            .card-body
+              .card-body-icon
+                i.fa.fa-fw.fa-comments
+              .mr-5 26 Posts
+            a.card-footer.text-white.clearfix.small.z-1(href="#")
+              span.float-left View Details
+              span.float-right
+                i.fa.fa-angle-right
+        
+        .col-xl-3.col-sm-6.mb-3
+          .card.text-white.bg-warning.o-hidden.h-100
+            .card-body
+              .card-body-icon
+                i.fa.fa-fw.fa-list
+              .mr-5 11 Subscribers!
+            a.card-footer.text-white.clearfix.small.z-1(href="#")
+              span.float-left View Details
+              span.float-right
+                i.fa.fa-angle-right
+        
+        .col-xl-3.col-sm-6.mb-3
+          .card.text-white.bg-success.o-hidden.h-100
+            .card-body
+              .card-body-icon
+                i.fa.fa-fw.fa-shopping-cart
+              .mr-5 5 Categories!
+            a.card-footer.text-white.clearfix.small.z-1(href="#")
+              span.float-left View Details
+              span.float-right
+                i.fa.fa-angle-right
+
+      //- <!-- DataTables -->
+      .card.mb-3
+        .card-header
+          i.fa.fa-table
+          span   All Posts
+        .card-body
+          .table-responsive
+        .card-footer.small.text-muted  Updated yesterday at 11:59 PM
+
+    footer.sticky-footer
+      .container.my-auto
+        .copyright.text-center.my-auto
+          span Copyright © Your Website 2018
