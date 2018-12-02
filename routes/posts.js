@@ -2,6 +2,14 @@ const Post = require("../models/Post");
 const express = require("express");
 const router = express.Router();
 
+router.get("/", async (req, res) => {
+  const posts = await Post.find().limit(10);
+  res.render("index", {
+    posts,
+    pageNumber: 1
+  });
+});
+
 router.get("/:pageNumber", async (req, res) => {
   const pageNumber = req.params.pageNumber;
   const pageSize = 10;
@@ -14,10 +22,10 @@ router.get("/:pageNumber", async (req, res) => {
   });
 });
 
-router.get("/post/:title", async (req, res) => {
-  const postTitle = req.params.title;
+router.get("/:category/:url", async (req, res) => {
+  const url = req.params.url;
 
-  const post = await Post.findOne({ title: postTitle }).limit(1);
+  const post = await Post.findOne({ url }).limit(1);
 
   res.render("post", {
     post

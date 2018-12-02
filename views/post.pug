@@ -58,13 +58,14 @@ html
           if post
             article
               h1.text-center=post.title
-              p.text-center.text-muted.font-weight-light Posted by Odogbor Fejiro on November 26, 2018
+              p.text-center.text-muted.font-weight-light= post.timeline
+              img.img-fluid.mb-3(src=post.image)
 
               != post.content
 
           .row.mb-3
             .col-sm-12
-              .main-ad.bg-dark
+              .bg-dark
                 p.text-light AD SPACE
           
           .row.mb-3
@@ -127,7 +128,7 @@ html
           aside
             .row.mb-3
               .col-sm-12
-                .aside-ad.bg-dark
+                .bg-dark
                   p.text-light AD SPACE
 
             form(action="" method="" class="mb-3")

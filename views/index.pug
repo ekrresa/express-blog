@@ -81,8 +81,8 @@ html
                   .col-sm-12.col-md-6.p-0
                     .card-body.pl-1
                       h4.card-title= post.title
-                      p.card-subtitle.mb-2.text-muted Posted by #{post.author} on #{post.published}
-                      a.btn.bg-info.text-white(href=`/posts/post/${post.title}`) Read more...
+                      p.card-subtitle.mb-2.text-muted Posted by #{post.author}
+                      a.btn.bg-info.text-white(href=`/blog/${post.category}/${post.url}`) Read more...
 
           .row.mb-3
               .col-sm-12
@@ -99,14 +99,14 @@ html
                   .col-sm-12.col-md-6.p-0
                     .card-body.pl-1
                       h4.card-title= post.title
-                      p.card-subtitle.mb-2.text-muted Posted by #{post.author} on #{post.published}
-                      a.btn.bg-info.text-white(href=`/posts/post/${post.title}`) Read more...
+                      p.card-subtitle.mb-2.text-muted Posted by #{post.author}
+                      a.btn.bg-info.text-white(href=`/blog/${post.category}/${post.url}`) Read more...
           - let nextPage = Number(pageNumber + 1)
           .row
             if pageNumber > 1
-              a.page-item.page-link(href=`/posts/${pageNumber-1}` style="margin-left: 0.9rem") 	&larr;  Previous
+              a.page-item.page-link(href=`/blog/${pageNumber-1}` style="margin-left: 0.9rem") 	&larr;  Previous
 
-            a.page-item.page-link.ml-auto(href=`/posts/${nextPage}` style="margin-right: 0.9rem") Next 	&rarr;
+            a.page-item.page-link.ml-auto(href=`/blog/${nextPage}` style="margin-right: 0.9rem") Next 	&rarr;
 
         .col-sm-12.col-md-4
           aside
