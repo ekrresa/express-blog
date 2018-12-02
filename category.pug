@@ -1,0 +1,17 @@
+extends dashboard.pug
+
+block content
+  .container
+    h1.text-center.my-3 Add Category
+
+    .bg-light.p-4
+      form
+        .form-group.row
+          label.col-sm-2.col-form-label(for="category") Category
+          .col-sm-6
+            input.form-control#category(type="text" name="category")
+
+        .row
+          .col-sm-2
+          .col-sm-8
+            button.btn.btn-primary(type="submit" name="submit") Save
