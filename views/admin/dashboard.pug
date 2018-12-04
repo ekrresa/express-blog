@@ -11,7 +11,7 @@ html(lang="en")
 
   body#page-top
     nav.navbar.navbar-expand.navbar-dark.bg-dark.static-top
-      a.navbar-brand.mr-1(href="#") AgricventuresNG
+      a.navbar-brand.mr-1(href="/") AgricventuresNG
       button.btn.btn-link.btn-sm.text-white.order-1.order-sm-0#sidebarToggle(href="#"): i.fa.fa-bars
 
       // Navbar
@@ -38,17 +38,17 @@ html(lang="en")
       // Sidebar
       ul.sidebar.navbar-nav
         li.nav-item.active
-          a.nav-link(href="admin.html") Dashboard
+          a.nav-link(href="/admin") Dashboard
         li.nav-item.active
-          a.nav-link(href="#") Create New Post
+          a.nav-link(href="/admin/post") Create New Post
         li.nav-item.active
           a.nav-link(href="/admin/category") Add Category
         li.nav-item.active
-          a.nav-link(href="#") Login
+          a.nav-link(href="/admin/login") Login
         li.nav-item.active
-          a.nav-link(href="#") Register
+          a.nav-link(href="/admin/register") Register
         li.nav-item.active
-          a.nav-link(href="#") Forgot Password
+          a.nav-link(href="/admin/password") Forgot Password
 
       block content
 

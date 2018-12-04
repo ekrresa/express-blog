@@ -35,6 +35,4 @@ router.get("/:category/:url", async (req, res) => {
   });
 });
 
-// Get count of posts, use to create page nav links.
-// Then get 10 posts each time with page number query param
 module.exports = router;
