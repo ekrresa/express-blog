@@ -7,11 +7,13 @@ block content
     .bg-light.p-4
       if error
         .alert.alert-danger.text-center= error
+      if success
+        .alert.alert-success.text-center= success
       form(method="post" action="/admin/category")
         .form-group.row
           label.col-sm-2.col-form-label(for="category") Category
           .col-sm-6
-            input.form-control#category(type="text" name="category")
+            input.form-control#category(type="text" name="category" autofocus)
 
         .row
           .col-sm-2

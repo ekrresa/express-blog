@@ -1,4 +1,5 @@
-const Category = require("../models/Category");
+const { Category } = require("../models/Category");
+const validateCategory = require("../middleware/validation");
 const express = require("express");
 const router = express.Router();
 
@@ -11,16 +12,23 @@ router.get("/category", async (req, res) => {
 });
 
 router.post("/category", async (req, res) => {
-  if (!req.body.category) {
+  const { value, error } = validateCategory(req.body);
+  if (error) {
+    return res.render("admin/category", { error: error.details[0].message });
+  }
+
+  const category = new Category({
+    name: value.category
+  });
+
+  try {
+    await category.save();
+    res.render("admin/category", { success: "category added successfully" });
+  } catch (error) {
     return res.render("admin/category", {
-      error: "category name is required"
+      error: "failed to save category, please try again later"
     });
   }
-  const category = new Category({
-    name: req.body.category
-  });
-  await category.save();
-  res.redirect("/admin");
 });
 
 module.exports = router;
