@@ -5,6 +5,8 @@ block content
     h1.text-center.my-3 Add Category
 
     .bg-light.p-4
+      if error
+        .alert.alert-danger.text-center= error
       form(method="post" action="/admin/category")
         .form-group.row
           label.col-sm-2.col-form-label(for="category") Category
