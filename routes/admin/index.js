@@ -1,3 +1,4 @@
+const { Category } = require("../../models/Category");
 const express = require("express");
 const router = express.Router();
 
@@ -6,7 +7,11 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/post", async (req, res) => {
-  res.render("admin/post");
+  const categories = await Category.find().select("name -_id");
+
+  res.render("admin/post", {
+    categories
+  });
 });
 
 router.get("/category", async (req, res) => {

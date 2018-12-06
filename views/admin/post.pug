@@ -5,7 +5,11 @@ block content
     h1.text-center.mt-3 New Post
     
     .bg-light.p-4
-      form
+      if error
+        .alert.alert-danger= error
+      if success
+        .alert.alert-success= success
+      form(action="/admin/post", method="post" enctype="multipart/form-data")
         .form-group.row
           label.col-sm-2.col-form-label(for="postTitle") Title
           .col-sm-6
@@ -15,6 +19,10 @@ block content
           label.col-sm-2.col-form-label(for="category") Category
           .col-sm-6
             select.form-control#category(name="category")
+              option(selected) Choose category...
+              if categories
+                each category in categories
+                  option.text-capitalize= category.name
               
         .form-group.row
           label.col-sm-2.col-form-label(for="postBody") Body
@@ -30,8 +38,15 @@ block content
           label.col-sm-2.col-form-label(for="author") Author
           .col-sm-6
             select.form-control#author(name="author")
+              option(selected) Odogbor Oghenefejiro
         .row
           .col-sm-2
           .col-sm-8
             button.btn.btn-primary(type="submit" name="submit") Save
+
+        script(src="https://cdn.ckeditor.com/4.11.1/full/ckeditor.js")
+        script
+          | CKEDITOR.replace( 'body', {
+          |   skin: 'moonocolor,/skins/moonocolor/'
+          | } );
 

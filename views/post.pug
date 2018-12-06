@@ -48,7 +48,6 @@ html
                 a(class="nav-link" href="#")
                   i.fa.fa-instagram
 
-
         .row.justify-content-center
           h1.site-header AgricVenturesNG
 
@@ -59,7 +58,11 @@ html
             article
               h1.text-center=post.title
               p.text-center.text-muted.font-weight-light= post.timeline
-              img.img-fluid.mb-3(src=post.image)
+
+              .row.justify-content-center.mb-3
+                .col-sm-10
+                  .post-image
+                    img.img-fluid(src=post.image style="height: 400px")
 
               != post.content
 

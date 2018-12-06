@@ -56,9 +56,14 @@ a.nav-link:hover {
   padding: 0;
 }
 
+.post-image {
+  height: 400px;
+}
+
 article img {
   width: 100%;
   height: 205px;
+  object-fit: cover;
 }
 
 .row .bg-dark,
