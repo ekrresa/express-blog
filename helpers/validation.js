@@ -59,8 +59,7 @@ module.exports.validateUser = function(body) {
       .min(6)
       .max(20)
       .trim()
-      .required(),
-    submit: Joi.any().strip()
+      .required()
   };
 
   return Joi.validate(body, schema, { abortEarly: false });

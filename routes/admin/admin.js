@@ -1,44 +1,9 @@
 const { Category } = require("../../models/Category");
 const Post = require("../../models/Post");
-const User = require("../../models/User");
-const {
-  validateCategory,
-  validatePost,
-  validateUser
-} = require("../../helpers/validation");
+const { validateCategory, validatePost } = require("../../helpers/validation");
 const { upload } = require("../../middleware/images");
 const express = require("express");
 const router = express.Router();
-
-router.post("/register", async (req, res) => {
-  const { value, error } = validateUser(req.body);
-  if (error)
-    return res.render("admin/register", { error: error.details[0].message });
-
-  let user = await User.findOne({ email: value.email });
-  if (user)
-    return res.render("admin/register", {
-      error: "User with this email is already registered"
-    });
-
-  user = new User({
-    firstname: value.firstname,
-    lastname: value.lastname,
-    email: value.email,
-    password: value.password
-  });
-
-  try {
-    await user.save();
-    return res.render("admin/register", {
-      success: "User registration successful"
-    });
-  } catch (err) {
-    return res.render("admin/register", {
-      error: err
-    });
-  }
-});
 
 router.post("/post", upload.single("postImage"), async (req, res) => {
   if (!req.file) {
