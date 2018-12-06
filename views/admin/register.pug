@@ -5,34 +5,35 @@ block content
     .card.card-register.mx-auto.mt-5
       .card-header Register an Account
       .card-body
-        form
+        if error
+          .alert.alert-danger.text-center= error
+        if success
+          .alert.alert-success.text-center= success
+        form(action="/admin/register", method="post")
           .form-group
             .form-row
               .col-md-6
                 .form-label-group
-                  input.form-control#firstName(type="text" placeholder="First name" required autofocus)
+                  input.form-control#firstName(type="text" name="firstname" placeholder="First name" autofocus)
                   label(for="firstName") First name
 
               .col-md-6
                 .form-label-group
-                  input.form-control#lastName(type="text" placeholder="Last name" required)
+                  input.form-control#lastName(type="text" name="lastname" placeholder="Last name")
                   label(for="lastName") Last name
           .form-group
             .form-label-group
-              input.form-control#inputEmail(type="email" placeholder="Email address" required)
+              input.form-control#inputEmail(type="email" name="email" placeholder="Email address")
               label(for="inputEmail") Email address
           .form-group
             .form-row
-              .col-md-6
+              .col-md-12
                 .form-label-group
-                  input.form-control#inputPassword(type="password" placeholder="Password" required)
+                  input.form-control#inputPassword(type="password" name="password" placeholder="Password")
                   label(for="inputPassword") Password
-              .col-md-6
-                .form-label-group
-                  input.form-control#confirmPassword(type="password" placeholder="Confirm password" required)
-                  label(for="confirmPassword") Confirm password
-          a.btn.btn-primary.btn-block(href="login.html") Register
+                  small.text-muted password should be between 6 - 20 characters
+          button.btn.btn-primary.btn-block(type="submit" name="submit") Register
 
         .text-center
-          a.d-block.small.mt-3(href="login.html") Login Page
-          a.d-block.small(href="forgot-password.html") Forgot Password
+          a.d-block.small.mt-3(href="/admin/login") Login Page
+          a.d-block.small(href="/admin/password") Forgot Password
