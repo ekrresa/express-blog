@@ -6,8 +6,7 @@ module.exports.validateCategory = function(body) {
       .min(3)
       .trim()
       .max(50)
-      .required(),
-    submit: Joi.any().strip()
+      .required()
   };
 
   return Joi.validate(body, schema, { abortEarly: false });
@@ -32,8 +31,7 @@ module.exports.validatePost = function(body) {
       .required(),
     author: Joi.string()
       .min(5)
-      .required(),
-    submit: Joi.any().strip()
+      .required()
   };
 
   return Joi.validate(body, schema, { abortEarly: false });
