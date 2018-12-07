@@ -5,20 +5,20 @@ block content
     .card.card-login.mx-auto.mt-5.bg-light
       .card-header Login
       .card-body
-        form
+        if error
+          .alert.alert-danger.text-center= error
+        if success
+          .alert.alert-success.text-center= success
+        form(action="/admin/login", method="post")
           .form-group
             .form-label-group
-              input.form-control#inputEmail(type="email" placeholder="Email address" required autofocus)
+              input.form-control#inputEmail(type="email" name="email" placeholder="Email address" required autofocus)
               label(for="inputEmail") Email address
           .form-group
             .form-label-group
-              input.form-control#inputPassword(type="password" placeholder="Password" required="required")
+              input.form-control#inputPassword(type="password" name="password" placeholder="Password")
               label(for="inputPassword") Password
-          .form-group
-            .checkbox
-              label Remember Password
-                input(type="checkbox" value="remember-me")
-          a.btn.btn-primary.btn-block(href="index.html") Login
+          button.btn.btn-primary.btn-block(type="submit") Login
 
         .text-center
           a.d-block.small.mt-3(href="/admin/register") Register an Account

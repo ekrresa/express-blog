@@ -1,8 +1,29 @@
 const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
-const { validateUser } = require("../../helpers/validation");
+const { validateUser, validateLogin } = require("../../helpers/validation");
 const express = require("express");
 const router = express.Router();
+
+router.post("/login", async (req, res) => {
+  const { value, error } = validateLogin(req.body);
+  if (error)
+    return res.render("admin/login", {
+      error: error.details[0].message
+    });
+
+  let user = await User.findOne({ email: value.email });
+  if (!user)
+    return res.render("admin/login", {
+      error: "Invalid email/password"
+    });
+
+  const validPassword = await bcrypt.compare(value.password, user.password);
+  if (!validPassword) {
+    return res.render("admin/login", { error: "Invalid email/password" });
+  }
+
+  console.log("login successful");
+});
 
 router.post("/register", async (req, res) => {
   const { value, error } = validateUser(req.body);

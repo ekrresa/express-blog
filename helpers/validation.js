@@ -62,3 +62,21 @@ module.exports.validateUser = function(body) {
 
   return Joi.validate(body, schema, { abortEarly: false });
 };
+
+module.exports.validateLogin = function(body) {
+  const schema = {
+    email: Joi.string()
+      .email()
+      .min(5)
+      .max(100)
+      .trim()
+      .required(),
+    password: Joi.string()
+      .min(6)
+      .max(20)
+      .trim()
+      .required()
+  };
+
+  return Joi.validate(body, schema, { abortEarly: false });
+};
