@@ -22,7 +22,10 @@ router.post("/login", async (req, res) => {
     return res.render("admin/login", { error: "Invalid email/password" });
   }
 
-  console.log("login successful");
+  req.session.userId = user._id;
+  req.session.name = user.firstname;
+
+  res.redirect("/admin");
 });
 
 router.post("/register", async (req, res) => {

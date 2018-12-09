@@ -23,13 +23,14 @@ router.post("/post", upload.single("postImage"), async (req, res) => {
     .toLowerCase()
     .split(" ")
     .join("-");
+  const { title, category, content, author, image, thumbnail } = value;
   const post = new Post({
-    title: value.title,
-    category: value.category,
-    content: value.body,
-    author: value.author,
-    image: value.postImage,
-    thumbnail: value.postImage,
+    title,
+    category,
+    content,
+    author,
+    image,
+    thumbnail,
     url
   });
 
