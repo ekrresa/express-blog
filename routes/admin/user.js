@@ -4,6 +4,15 @@ const { validateUser, validateLogin } = require("../../helpers/validation");
 const express = require("express");
 const router = express.Router();
 
+router.get("/logout", (req, res) => {
+  req.session.destroy(err => {
+    if (err) {
+      res.redirect("/admin");
+    }
+    res.redirect("/admin/login");
+  });
+});
+
 router.post("/login", async (req, res) => {
   const { value, error } = validateLogin(req.body);
   if (error)
