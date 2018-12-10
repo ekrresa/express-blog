@@ -113,28 +113,7 @@ html
             a.page-item.page-link.ml-auto(href=`/blog/${nextPage}` style="margin-right: 0.9rem") Next 	&rarr;
 
         .col-sm-12.col-md-4
-          aside
-            .row.mb-3
-              .col-sm-12
-                .bg-dark
-                  p.text-light AD SPACE
-
-            form(action="" method="" class="mb-3")
-              .input-group.mb-3
-                input(type="text" class="form-control" placeholder="Search here..." aria-label="Search here..." aria-describedby="button-addon2")
-                .input-group-append
-                  button(type="submit" class="btn btn-outline-secondary" id="button-addon2") Search
-
-            h4.text-capitalize.mb-3 Popular Posts
-            
-            h4.text-capitalize.mb-3 Categories
-              ul
-                if categories
-                  each category in categories
-                    li
-                      a.btn(href=`/blog/posts/${category.name}`) #{category.name}
-
-            h4.text-capitalize.mb-3 Archives
+          include aside
 
     footer.mt-4.pt-2
       .container
