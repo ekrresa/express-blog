@@ -5,6 +5,10 @@ header {
   margin-bottom: 2rem;
 }
 
+a:hover {
+  text-decoration: none;
+}
+
 .jumbotron {
   background: none;
   color: #ffffff;
@@ -50,6 +54,10 @@ a.nav-link:hover {
 
 .card {
   border: none;
+}
+
+.card-title {
+  padding-right: 1rem;
 }
 
 .card-body {
@@ -103,6 +111,11 @@ aside .bg-dark {
   font-size: 1rem;
 }
 
+aside h4 ul {
+  list-style: none;
+  padding: 0;
+}
+
 footer {
   background-color: #231a06e8;
   color: #ffffff;
@@ -134,6 +147,12 @@ footer p a:hover {
 
 .list-inline:first-child {
   font-weight: 600;
+}
+
+@media screen and (min-width: 768px) {
+  .col-md-6 {
+    padding-right: 0;
+  }
 }
 
 @media screen and (max-width: 768px) {

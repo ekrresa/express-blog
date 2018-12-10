@@ -2,7 +2,7 @@ const express = require("express");
 const session = require("express-session");
 const MongoDBStore = require("connect-mongodb-session")(session);
 const path = require("path");
-const dbConnect = require("./db");
+require("./db");
 const posts = require("./routes/posts");
 const index = require("./routes/index");
 const admin = require("./routes/admin/admin");

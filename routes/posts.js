@@ -25,6 +25,17 @@ router.get("/:pageNumber", async (req, res) => {
   });
 });
 
+router.get("/posts/:category", async (req, res) => {
+  const category = req.params.category;
+  // const pageNumber = 2;
+  // const pageSize = 10;
+
+  const posts = await Post.find({ category });
+  // return res.json(posts);
+
+  res.render("index", { posts });
+});
+
 router.get("/:category/:url", async (req, res) => {
   const url = req.params.url;
 
