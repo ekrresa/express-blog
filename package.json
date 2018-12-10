@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "connect-mongodb-session": "^2.0.6",
     "express": "^4.16.4",
     "express-session": "^1.15.6",
     "joi": "^14.3.0",

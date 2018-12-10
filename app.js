@@ -1,7 +1,8 @@
 const express = require("express");
 const session = require("express-session");
+const MongoDBStore = require("connect-mongodb-session")(session);
 const path = require("path");
-require("./db");
+const dbConnect = require("./db");
 const posts = require("./routes/posts");
 const index = require("./routes/index");
 const admin = require("./routes/admin/admin");
@@ -19,12 +20,25 @@ const {
 
 app.set("view engine", "pug");
 
+const store = new MongoDBStore(
+  {
+    uri: "mongodb://localhost/agricblog",
+    collection: "mySessions"
+  },
+  function(error) {
+    if (error) {
+      console.log(error);
+    }
+  }
+);
+
 app.use(
   session({
     name: SESS_NAME,
     resave: false,
     saveUninitialized: false,
     secret: SESS_SECRET,
+    store,
     cookie: {
       maxAge: SESS_LIFETIME,
       sameSite: true,
