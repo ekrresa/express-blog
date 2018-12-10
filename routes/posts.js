@@ -27,13 +27,39 @@ router.get("/:pageNumber", async (req, res) => {
 
 router.get("/posts/:category", async (req, res) => {
   const category = req.params.category;
-  // const pageNumber = 2;
-  // const pageSize = 10;
+  const pageNumber = 1;
+  let posts = await Post.find({ category }).sort("published");
 
-  const posts = await Post.find({ category });
-  // return res.json(posts);
+  if (posts.length > 10) {
+    posts = await Post.find({ category })
+      .sort("published")
+      .limit(10);
 
-  res.render("index", { posts });
+    res.render("category", {
+      posts,
+      category,
+      pageNumber
+    });
+  } else {
+    res.render("category", { posts });
+  }
+});
+
+router.get("/posts/:category/:pageNumber", async (req, res) => {
+  const pageNumber = req.params.pageNumber;
+  const category = req.params.category;
+  const pageSize = 10;
+
+  let posts = await Post.find({ category })
+    .sort("published")
+    .skip((pageNumber - 1) * pageSize)
+    .limit(pageSize);
+
+  res.render("category", {
+    posts,
+    category,
+    pageNumber: parseInt(pageNumber)
+  });
 });
 
 router.get("/:category/:url", async (req, res) => {
