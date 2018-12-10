@@ -149,7 +149,16 @@ footer p a:hover {
   font-weight: 600;
 }
 
+@media screen and (min-width: 576px) {
+  .container {
+    max-width: 700px;
+  }
+}
+
 @media screen and (min-width: 768px) {
+  .container {
+    max-width: 1068px;
+  }
   .col-md-6 {
     padding-right: 0;
   }

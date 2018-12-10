@@ -13,40 +13,7 @@ html
   body
     header.pb-5
       .container
-        nav.navbar.navbar-expand-md.navbar-light
-          a(class="navbar-brand" href="#") AgricVenturesNG
-          button(class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation")
-            span.navbar-toggler-icon
-          .collapse.navbar-collapse#navbarNav
-            ul.navbar-nav
-              li.nav-item.active
-                a(class="nav-link" href="/") Home 
-                  span.sr-only (current)
-              li.nav-item
-                a(class="nav-link" href="#") Vacancies 
-              li.nav-item
-                a(class="nav-link" href="#") Events 
-              li.nav-item
-                a(class="nav-link" href="#") Admissions 
-              li.nav-item
-                a(class="nav-link" href="/about") About
-              li.nav-item
-                a(class="nav-link" href="/contact") Contact Us
-
-          .d-flex.justify-content-end.contact
-            ul.navbar-nav
-              li.nav-item
-                i.fa.fa-phone 
-                span.ml-2 +2347036161822
-              li.nav-item
-                a(class="nav-link" href="#")
-                  i.fa.fa-facebook-square
-              li.nav-item
-                a(class="nav-link" href="#")
-                  i.fa.fa-twitter-square
-              li.nav-item
-                a(class="nav-link" href="#")
-                  i.fa.fa-instagram
+        include nav
 
         .row.justify-content-center
           h1.site-header AgricVenturesNG
