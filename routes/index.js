@@ -19,16 +19,26 @@ router.get("/", async (req, res) => {
   });
 });
 
-router.get("/about", (req, res) => {
-  res.render("about");
+router.get("/about", async (req, res) => {
+  const categories = await Category.find()
+    .sort("name")
+    .select("name -_id");
+  res.render("about", { categories });
 });
 
-router.get("/contact", (req, res) => {
-  res.render("contact");
+router.get("/contact", async (req, res) => {
+  const categories = await Category.find()
+    .sort("name")
+    .select("name -_id");
+  res.render("contact", { categories });
 });
 
-router.get("/disclaimer", (req, res) => {
-  res.render("disclaimer");
+router.get("/disclaimer", async (req, res) => {
+  const categories = await Category.find()
+    .sort("name")
+    .select("name -_id");
+
+  res.render("disclaimer", { categories });
 });
 
 module.exports = router;
