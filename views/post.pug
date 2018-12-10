@@ -57,7 +57,9 @@ html
           if post
             article
               h1.text-center=post.title
-              p.text-center.text-muted.font-weight-light= post.timeline
+              p.text-center.text-muted.font-weight-light Posted in 
+                a.text-dark(href=`/blog/posts/${post.category}`)= post.category 
+                |  by #{post.author} on #{post.date}
 
               .row.justify-content-center.mb-3
                 .col-sm-10

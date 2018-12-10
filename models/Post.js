@@ -13,13 +13,11 @@ const PostSchema = new mongoose.Schema({
   updated: { type: Date, default: Date.now() }
 });
 
-PostSchema.virtual("timeline").get(function() {
+PostSchema.virtual("date").get(function() {
   let year = moment(this.published).format("YYYY");
   let month = moment(this.published).format("MMMM");
   let day = moment(this.published).format("DD");
-  return `Posted in ${
-    this.category
-  } by ${this.author} on ${month} ${day}, ${year}`;
+  return `${month} ${day}, ${year}`;
 });
 
 module.exports = mongoose.model("Post", PostSchema);
