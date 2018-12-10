@@ -27,4 +27,8 @@ router.get("/contact", (req, res) => {
   res.render("contact");
 });
 
+router.get("/disclaimer", (req, res) => {
+  res.render("disclaimer");
+});
+
 module.exports = router;
