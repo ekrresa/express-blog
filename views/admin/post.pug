@@ -2,51 +2,93 @@ extends dashboard.pug
 
 block content
   .container
-    h1.text-center.mt-3 New Post
+    if post
+      h1.text-center.mt-3 Edit Post
+    else
+      h1.text-center.mt-3 New Post
     
     .bg-light.p-4
       if error
         .alert.alert-danger= error
       if success
         .alert.alert-success= success
-      form(action="/admin/post", method="post" enctype="multipart/form-data")
-        .form-group.row
-          label.col-sm-2.col-form-label(for="postTitle") Title
-          .col-sm-6
-            input.form-control#postTitle(type="text" name="title")
 
-        .form-group.row
-          label.col-sm-2.col-form-label(for="category") Category
-          .col-sm-6
-            select.form-control#category(name="category")
-              option(selected) Choose category...
-              if categories
-                each category in categories
-                  option.text-capitalize= category.name
-              
-        .form-group.row
-          label.col-sm-2.col-form-label(for="postBody") Body
-          .col-sm-8
-            textarea.form-control#postBody(name="body" rows="5")
+      if post
+        form(action="/admin/update/post", method="post")
+          .form-group.row
+            label.col-sm-2.col-form-label(for="postTitle") Title
+            .col-sm-6
+              input.form-control#postTitle(type="text" name="title" value=`${post.title}`)
 
-        .form-group.row
-          label.col-sm-2.col-form-label(for="postImage") Post Image
-          .col-sm-3
-            input.form-control-file#postImage(name="postImage" type="file")
+          .form-group.row
+            label.col-sm-2.col-form-label(for="category") Category
+            .col-sm-6
+              select.form-control#category(name="category")
+                if categories
+                  each category in categories
+                    option.text-capitalize= category.name
+                
+          .form-group.row
+            label.col-sm-2.col-form-label(for="postBody") Body
+            .col-sm-8
+              textarea.form-control#postBody(name="body" rows="5")= post.content
 
-        .form-group.row
-          label.col-sm-2.col-form-label(for="author") Author
-          .col-sm-6
-            select.form-control#author(name="author")
-              option(selected) Odogbor Oghenefejiro
-        .row
-          .col-sm-2
-          .col-sm-8
-            button.btn.btn-primary(type="submit") Save
+          .form-group.row
+            label.col-sm-2.col-form-label(for="author") Author
+            .col-sm-6
+              select.form-control#author(name="author")
+                option(selected) Odogbor Oghenefejiro
+          .row
+            .col-sm-2
+            .col-sm-8
+              button.btn.btn-primary(type="submit") Update
 
         script(src="https://cdn.ckeditor.com/4.11.1/full/ckeditor.js")
         script
           | CKEDITOR.replace( 'body', {
-          |   skin: 'moonocolor,/skins/moonocolor/'
+          |   skin: 'moonocolor,/skins/moonocolor/',
+          |   height: 500
+          | } );
+      else
+        form(action="/admin/post", method="post" enctype="multipart/form-data")
+          .form-group.row
+            label.col-sm-2.col-form-label(for="postTitle") Title
+            .col-sm-6
+              input.form-control#postTitle(type="text" name="title")
+
+          .form-group.row
+            label.col-sm-2.col-form-label(for="category") Category
+            .col-sm-6
+              select.form-control#category(name="category")
+                option(selected) Choose category...
+                if categories
+                  each category in categories
+                    option.text-capitalize= category.name
+                
+          .form-group.row
+            label.col-sm-2.col-form-label(for="postBody") Body
+            .col-sm-8
+              textarea.form-control#postBody(name="body" rows="5")
+
+          .form-group.row
+            label.col-sm-2.col-form-label(for="postImage") Post Image
+            .col-sm-3
+              input.form-control-file#postImage(name="postImage" type="file")
+
+          .form-group.row
+            label.col-sm-2.col-form-label(for="author") Author
+            .col-sm-6
+              select.form-control#author(name="author")
+                option(selected) Odogbor Oghenefejiro
+          .row
+            .col-sm-2
+            .col-sm-8
+              button.btn.btn-primary(type="submit") Save
+
+        script(src="https://cdn.ckeditor.com/4.11.1/full/ckeditor.js")
+        script
+          | CKEDITOR.replace( 'body', {
+          |   skin: 'moonocolor,/skins/moonocolor/',
+          |   height: 500
           | } );
 

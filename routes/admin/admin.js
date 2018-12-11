@@ -65,4 +65,17 @@ router.post("/category", async (req, res) => {
   }
 });
 
+router.get("/edit/:postTitle", async (req, res) => {
+  const title = req.params.postTitle;
+  const categories = await Category.find()
+    .sort("name")
+    .select("name -_id");
+  const post = await Post.findOne({ title });
+
+  res.render("admin/post", {
+    post,
+    categories
+  });
+});
+
 module.exports = router;

@@ -72,9 +72,9 @@ block content
                       td= post.category
                       td= post.date
                       td 
-                        a.btn.btn-warning(href="#") Edit
+                        a.btn.btn-warning(href=`/admin/edit/${post.title}`) Edit
                       td
-                        a.btn.btn-danger(href="#") Delete
+                        a.btn.btn-danger(href=`/admin/delete/${post.title}`) Delete
 
         .card-footer.small.text-muted
           - let nextPage = Number(pageNumber + 1)
