@@ -14,7 +14,7 @@ block content
         .alert.alert-success= success
 
       if post
-        form(action="/admin/update/post", method="post")
+        form(action=`/admin/update/${post._id}`, method="post")
           .form-group.row
             label.col-sm-2.col-form-label(for="postTitle") Title
             .col-sm-6

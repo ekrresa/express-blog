@@ -65,17 +65,41 @@ router.post("/category", async (req, res) => {
   }
 });
 
-router.get("/edit/:postTitle", async (req, res) => {
-  const title = req.params.postTitle;
+router.get("/edit/:id", async (req, res) => {
+  const id = req.params.id;
   const categories = await Category.find()
     .sort("name")
     .select("name -_id");
-  const post = await Post.findOne({ title });
+  const post = await Post.findOne({ _id: id });
 
   res.render("admin/post", {
     post,
     categories
   });
+});
+
+router.post("/update/:id", async (req, res) => {
+  const id = req.params.id;
+  const { title, category, body, author } = req.body;
+  const url = title
+    .toLowerCase()
+    .split(" ")
+    .join("-");
+  const post = await Post.update(
+    { _id: id },
+    {
+      $set: {
+        title,
+        category,
+        content: body,
+        author,
+        url,
+        updated: Date.now()
+      }
+    }
+  );
+
+  res.redirect("/admin");
 });
 
 module.exports = router;

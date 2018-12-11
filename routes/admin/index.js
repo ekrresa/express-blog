@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.get("/", async (req, res) => {
   const posts = await Post.find()
-    .select("title category published url -_id")
+    .select("title category published url")
     .sort("-published")
     .limit(10);
 
