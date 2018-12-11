@@ -17,7 +17,8 @@ block content
             .card-body
               .card-body-icon
                 i.fa.fa-fw.fa-comments
-              .mr-5 26 Posts
+              .mr-5= postCount 
+              span Posts
             a.card-footer.text-white.clearfix.small.z-1(href="#")
               span.float-left View Details
               span.float-right
@@ -39,7 +40,8 @@ block content
             .card-body
               .card-body-icon
                 i.fa.fa-fw.fa-shopping-cart
-              .mr-5 5 Categories!
+              .mr-5= categoriesCount 
+              span Categories!
             a.card-footer.text-white.clearfix.small.z-1(href="#")
               span.float-left View Details
               span.float-right
@@ -52,7 +54,35 @@ block content
           span   All Posts
         .card-body
           .table-responsive
-        .card-footer.small.text-muted  Updated yesterday at 11:59 PM
+          - let serial = 1;
+            if posts
+              table.table.table-striped
+                thead
+                  tr
+                    th(scope="col") #
+                    th(scope="col") Title
+                    th(scope="col") Category
+                    th(scope="col") Published
+                tbody
+                  each post in posts
+                    tr
+                      th(scope="row")= serial++
+                      td
+                        a(href=`/blog/${post.category}/${post.url}`)= post.title
+                      td= post.category
+                      td= post.date
+                      td 
+                        a.btn.btn-warning(href="#") Edit
+                      td
+                        a.btn.btn-danger(href="#") Delete
+
+        .card-footer.small.text-muted
+          - let nextPage = Number(pageNumber + 1)
+          .row
+            if pageNumber > 1
+              a.page-item.page-link(href=`/admin/${pageNumber-1}` style="margin-left: 0.9rem") 	&larr;  Previous
+
+            a.page-item.page-link.ml-auto(href=`/admin/${nextPage}` style="margin-right: 0.9rem") Next 	&rarr;
 
     footer.sticky-footer
       .container.my-auto
