@@ -102,4 +102,10 @@ router.post("/update/:id", async (req, res) => {
   res.redirect("/admin");
 });
 
+router.get("/delete/:id", async (req, res) => {
+  const id = req.params.id;
+  await Post.deleteOne({ _id: id });
+  res.redirect("/admin");
+});
+
 module.exports = router;
