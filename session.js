@@ -11,7 +11,7 @@ const {
 
 const store = new MongoDBStore(
   {
-    uri: "mongodb://localhost/agricblog",
+    uri: process.env.MONGODB_URI || "mongodb://localhost/agricblog",
     collection: "mySessions"
   },
   function(error) {
