@@ -19,24 +19,6 @@ router.get("/", async (req, res) => {
   });
 });
 
-router.get("/:pageNumber", async (req, res) => {
-  const postCount = await Post.find().count();
-  const categoriesCount = await Category.find().count();
-  const pageNumber = req.params.pageNumber;
-  const pageSize = 10;
-
-  const posts = await Post.find()
-    .skip((pageNumber - 1) * pageSize)
-    .limit(pageSize);
-
-  res.render("admin/index", {
-    postCount,
-    categoriesCount,
-    posts,
-    pageNumber: parseInt(pageNumber)
-  });
-});
-
 router.get("/post", async (req, res) => {
   const categories = await Category.find().select("name -_id");
 
@@ -59,6 +41,24 @@ router.get("/register", (req, res) => {
 
 router.get("/password", (req, res) => {
   res.render("admin/password");
+});
+
+router.get("/:pageNumber", async (req, res) => {
+  const postCount = await Post.find().count();
+  const categoriesCount = await Category.find().count();
+  const pageNumber = req.params.pageNumber;
+  const pageSize = 10;
+
+  const posts = await Post.find()
+    .skip((pageNumber - 1) * pageSize)
+    .limit(pageSize);
+
+  res.render("admin/index", {
+    postCount,
+    categoriesCount,
+    posts,
+    pageNumber: parseInt(pageNumber)
+  });
 });
 
 module.exports = router;

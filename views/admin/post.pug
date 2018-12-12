@@ -14,7 +14,7 @@ block content
         .alert.alert-success= success
 
       if post
-        form(action=`/admin/update/${post._id}`, method="post")
+        form(action=`/admin/cms/update/${post._id}`, method="post")
           .form-group.row
             label.col-sm-2.col-form-label(for="postTitle") Title
             .col-sm-6
@@ -50,7 +50,7 @@ block content
           |   height: 500
           | } );
       else
-        form(action="/admin/post", method="post" enctype="multipart/form-data")
+        form(action="/admin/cms/post", method="post" enctype="multipart/form-data")
           .form-group.row
             label.col-sm-2.col-form-label(for="postTitle") Title
             .col-sm-6

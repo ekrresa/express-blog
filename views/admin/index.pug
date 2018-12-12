@@ -4,12 +4,6 @@ block content
   #content-wrapper
     .container-fluid
 
-      //- <!-- Breadcrumbs -->
-      ol.breadcrumb
-        li.breadcrumb-item
-          a(href="#") Dashboard
-        li.breadcrumb-item.active Overview
-
       //- <!-- Icon Cards -->
       .row
         .col-xl-3.col-sm-6.mb-3
@@ -72,9 +66,9 @@ block content
                       td= post.category
                       td= post.date
                       td 
-                        a.btn.btn-warning(href=`/admin/edit/${post._id}`) Edit
+                        a.btn.btn-warning(href=`/admin/cms/edit/${post._id}`) Edit
                       td
-                        a.btn.btn-danger(href=`/admin/delete/${post._id}`) Delete
+                        a.btn.btn-danger(href=`/admin/cms/delete/${post._id}`) Delete
 
         .card-footer.small.text-muted
           - let nextPage = Number(pageNumber + 1)
