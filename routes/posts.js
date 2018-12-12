@@ -27,9 +27,12 @@ router.get("/:pageNumber", async (req, res) => {
   const posts = await Post.find()
     .skip((pageNumber - 1) * pageSize)
     .limit(pageSize);
+  const post1 = posts.slice(0, 3);
+  const post2 = posts.slice(3, 10);
   res.render("index", {
     categories,
-    posts,
+    post1,
+    post2,
     pageNumber: parseInt(pageNumber)
   });
 });
