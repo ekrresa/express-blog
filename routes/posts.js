@@ -15,6 +15,39 @@ router.post("/posts/search", async (req, res) => {
   res.render("search", { posts, categories });
 });
 
+router.get("/posts/group", async (req, res) => {
+  let group = await Post.aggregate([
+    {
+      $group: {
+        _id: {
+          year: { $year: "$published" },
+          month: { $month: "$published" }
+        },
+        count: { $sum: 1 }
+      }
+    },
+    { $sort: { _id: -1 } }
+  ]);
+  const month = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+  group.forEach(row => {
+    row._id.month = month[row._id.month - 1];
+  });
+  return res.send(group);
+});
+
 router.get("/", async (req, res) => {
   const posts = await Post.find().limit(10);
   const categories = await Category.find()

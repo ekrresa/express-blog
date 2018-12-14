@@ -12,11 +12,14 @@ aside
 
   h4.text-capitalize.mb-3 Popular Posts
   
-  h4.text-capitalize.mb-3 Categories
-    ul
-      if categories
-        each category in categories
-          li
-            a.btn(href=`/blog/posts/${category.name}`) #{category.name}
+  h4.text-capitalize Categories
+  ul
+    if categories
+      each category in categories
+        li
+          a.btn(href=`/blog/posts/${category.name}`) #{category.name}
 
-  h4.text-capitalize.mb-3 Archives
+  h4.text-capitalize Archives
+  ul.archives
+
+  script(src="/javascript/archives.js")
