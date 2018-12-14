@@ -4,9 +4,9 @@ aside
       .bg-dark
         p.text-light AD SPACE
 
-  form(action="" method="" class="mb-3")
+  form(action="/blog/posts/search" method="post" class="mb-3")
     .input-group.mb-3
-      input(type="text" class="form-control" placeholder="Search here..." aria-label="Search here..." aria-describedby="button-addon2")
+      input(type="text" class="form-control" name="search" placeholder="Search here..." aria-label="Search here..." aria-describedby="button-addon2")
       .input-group-append
         button(type="submit" class="btn btn-outline-secondary" id="button-addon2") Search
 

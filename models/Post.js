@@ -13,6 +13,8 @@ const PostSchema = new mongoose.Schema({
   updated: { type: Date, default: Date.now() }
 });
 
+PostSchema.index({ title: "text" });
+
 PostSchema.virtual("date").get(function() {
   let year = moment(this.published).format("YYYY");
   let month = moment(this.published).format("MMMM");

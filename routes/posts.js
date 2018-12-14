@@ -3,6 +3,18 @@ const { Category } = require("../models/Category");
 const express = require("express");
 const router = express.Router();
 
+router.post("/posts/search", async (req, res) => {
+  const { search } = req.body;
+  let posts = await Post.find({ $text: { $search: search } }).sort(
+    "-published"
+  );
+  const categories = await Category.find()
+    .sort("name")
+    .select("name -_id");
+
+  res.render("search", { posts, categories });
+});
+
 router.get("/", async (req, res) => {
   const posts = await Post.find().limit(10);
   const categories = await Category.find()

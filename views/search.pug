@@ -1,0 +1,92 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(http-equiv="X-UA-Compatible" content="IE=edge")
+    title AgricVenturesNG
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(rel="stylesheet" media="screen" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css")
+    link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+    link(rel="stylesheet", href="/stylesheets/main.css")
+    link(href="https://fonts.googleapis.com/css?family=Poppins:400,600,700"
+      rel="stylesheet")
+  body
+    header.pb-5
+      .container
+        include nav
+
+        .row.justify-content-center
+          h1.site-header AgricVenturesNG
+
+    section.container.mb-4
+      .row
+        .col-sm-12.col-md-8.border-right
+          if posts
+            each post in posts
+              article
+                .card.shadow-sm.mb-3.bg-light.rounded
+                  .row.align-items-center
+                    .col-sm-12.col-md-6
+                      .pl-1.py-1
+                        img(src=post.image alt="image of post")
+                    .col-sm-12.col-md-6
+                      .card-body.pl-1
+                        a.text-uppercase(href=`/blog/posts/${post.category}`).card-subtitle.mb-2.text-muted #{post.category}
+                        h4.card-title
+                          a.text-dark(href=`/blog/${post.category}/${post.url}`)= post.title
+                        p.card-subtitle.mb-2.text-muted Posted by #{post.author}
+                        p.card-subtitle.mb-2.text-muted(style="font-size: 0.8rem")= post.date
+                        a.btn.bg-info.text-white(href=`/blog/${post.category}/${post.url}`) Read more...
+          
+          if posts.length == 0
+            p.text-dark No posts under this category. Please check back later.
+
+        .col-sm-12.col-md-4
+          include aside
+            .row
+              .col-sm-12
+                h4 Subscribe To Our Newsletter
+            
+              .col-sm-12
+                form(action="" method="" class="form-inline")
+                  input(type="email" name="" class="form-control" placeholder="Enter Email...")
+                  button(type="submit" class="btn ml-2") Subscribe
+
+    footer.mt-4.pt-2
+      .container
+        .row
+          .col-md-12
+            h2 AgricVenturesNG
+        .row
+          .col-sm-12.col-md-5
+            p.mb-3 AgricVenturesNG is a blog dedicated to bring the latest News and event on Agriculture happen around Nigeria.
+            p 
+              i.fa.fa-envelope-o
+              span.ml-2
+                a(href="mailto:kelvinekrresa@gmail.com") kelvinekrresa@gmail.com 
+            p 
+              i.fa.fa-phone 
+              span.ml-2 +2347036161822
+          .col-sm-12.col-md-3
+            p
+              a(href="#") Privacy Policy
+            p 
+              a(href="#") Terms &amp; Conditions 
+          .col-sm-12.col-md-4
+            ul.footer-nav
+              li.nav-item
+                a(href="#")
+                  i.fa.fa-facebook-square
+              li.nav-item
+                a(href="#")
+                  i.fa.fa-twitter-square
+              li.nav-item
+                a(href="#")
+                  i.fa.fa-instagram      
+
+        .row
+          .col-sm-12.text-center
+            p Copyright &copy; 2018. Built by Ochuko
+
+    script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
+    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous")
