@@ -1,72 +1,22 @@
 const Post = require("../models/Post");
-const { Category } = require("../models/Category");
 const express = require("express");
 const router = express.Router();
 
-router.post("/posts/search", async (req, res) => {
-  const { search } = req.body;
-  let posts = await Post.find({ $text: { $search: search } }).sort(
-    "-published"
-  );
-  const categories = await Category.find()
-    .sort("name")
-    .select("name -_id");
+// router.get("/posts/date/:year", async (req, res) => {
+//   let { year } = req.params;
+//   const posts = await Post.where(
+//     new Date("published").getFullYear().toString()
+//   ).equals("2018");
+//   res.json(posts);
+// });
 
-  res.render("search", { posts, categories });
-});
-
-router.get("/posts/group", async (req, res) => {
-  let group = await Post.aggregate([
-    {
-      $group: {
-        _id: {
-          year: { $year: "$published" },
-          month: { $month: "$published" }
-        },
-        count: { $sum: 1 }
-      }
-    },
-    { $sort: { _id: -1 } }
-  ]);
-  const month = [
-    "January",
-    "February",
-    "March",
-    "April",
-    "May",
-    "June",
-    "July",
-    "August",
-    "September",
-    "October",
-    "November",
-    "December"
-  ];
-  group.forEach(row => {
-    row._id.month = month[row._id.month - 1];
-  });
-  return res.send(group);
-});
-
+// Route for /blog
 router.get("/", async (req, res) => {
-  const posts = await Post.find().limit(10);
-  const categories = await Category.find()
-    .sort("name")
-    .select("name -_id");
-  const post1 = posts.slice(0, 3);
-  const post2 = posts.slice(3, 10);
-  res.render("index", {
-    categories,
-    post1,
-    post2,
-    pageNumber: 1
-  });
+  res.redirect("/blog/1");
 });
 
+// Route for /blog with pagination
 router.get("/:pageNumber", async (req, res) => {
-  const categories = await Category.find()
-    .sort("name")
-    .select("name -_id");
   const pageNumber = req.params.pageNumber;
   const pageSize = 10;
   const posts = await Post.find()
@@ -75,17 +25,14 @@ router.get("/:pageNumber", async (req, res) => {
   const post1 = posts.slice(0, 3);
   const post2 = posts.slice(3, 10);
   res.render("index", {
-    categories,
     post1,
     post2,
     pageNumber: parseInt(pageNumber)
   });
 });
 
+// Route to get posts by category
 router.get("/posts/:category", async (req, res) => {
-  const categories = await Category.find()
-    .sort("name")
-    .select("name -_id");
   const category = req.params.category;
   const pageNumber = 1;
   let posts = await Post.find({ category }).sort("-published");
@@ -96,22 +43,18 @@ router.get("/posts/:category", async (req, res) => {
       .limit(10);
 
     res.render("category", {
-      categories,
       posts,
       category,
       pageNumber
     });
   } else {
-    res.render("category", { posts, categories });
+    res.render("category", { posts, category });
   }
 });
 
+// Route to get posts by category with pagination
 router.get("/posts/:category/:pageNumber", async (req, res) => {
-  const categories = await Category.find()
-    .sort("name")
-    .select("name -_id");
-  const pageNumber = req.params.pageNumber;
-  const category = req.params.category;
+  const { pageNumber, category } = req.params;
   const pageSize = 10;
 
   let posts = await Post.find({ category })
@@ -120,25 +63,31 @@ router.get("/posts/:category/:pageNumber", async (req, res) => {
     .limit(pageSize);
 
   res.render("category", {
-    categories,
     posts,
     category,
     pageNumber: parseInt(pageNumber)
   });
 });
 
+// Route to get single post
 router.get("/:category/:url", async (req, res) => {
-  const categories = await Category.find()
-    .sort("name")
-    .select("name -_id");
   const url = req.params.url;
 
   const post = await Post.findOne({ url }).limit(1);
 
   res.render("post", {
-    categories,
     post
   });
+});
+
+// Route to search for posts
+router.post("/posts/search", async (req, res) => {
+  const { search } = req.body;
+  let posts = await Post.find({ $text: { $search: search } }).sort(
+    "-published"
+  );
+
+  res.render("search", { posts });
 });
 
 module.exports = router;

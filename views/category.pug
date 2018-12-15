@@ -21,6 +21,8 @@ html
     section.container.mb-4
       .row
         .col-sm-12.col-md-8.border-right
+          if category
+            h1.mb-5.text-center.text-dark= category
           if posts
             each post in posts
               article

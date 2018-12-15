@@ -1,1 +1,5 @@
-****Change categories to lower case
+****Subscribers (Mailchimp)
+****View Counter (Popular Post)
+****Related Post
+****Logging
+****Error Handling (Try/Catch)

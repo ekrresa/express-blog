@@ -9,8 +9,8 @@ const PostSchema = new mongoose.Schema({
   thumbnail: String,
   category: String,
   url: String,
-  published: { type: Date, default: Date.now() },
-  updated: { type: Date, default: Date.now() }
+  published: { type: Date, default: new Date() },
+  updated: { type: Date, default: new Date() }
 });
 
 PostSchema.index({ title: "text" });

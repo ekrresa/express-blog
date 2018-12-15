@@ -38,8 +38,8 @@ html
                         p.card-subtitle.mb-2.text-muted(style="font-size: 0.8rem")= post.date
                         a.btn.bg-info.text-white(href=`/blog/${post.category}/${post.url}`) Read more...
           
-          if posts.length == 0
-            p.text-dark No posts under this category. Please check back later.
+          if posts.length === 0
+            p.text-dark Your search returned no results.
 
         .col-sm-12.col-md-4
           include aside
