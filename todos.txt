@@ -1,5 +1,4 @@
 ****Subscribers (Mailchimp)
-****View Counter (Popular Post)
-****Related Post
+****Related Post / Fuzzy search
 ****Logging
 ****Error Handling (Try/Catch)

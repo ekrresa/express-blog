@@ -2,14 +2,6 @@ const Post = require("../models/Post");
 const express = require("express");
 const router = express.Router();
 
-// router.get("/posts/date/:year", async (req, res) => {
-//   let { year } = req.params;
-//   const posts = await Post.where(
-//     new Date("published").getFullYear().toString()
-//   ).equals("2018");
-//   res.json(posts);
-// });
-
 // Route for /blog
 router.get("/", async (req, res) => {
   res.redirect("/blog/1");
@@ -74,6 +66,9 @@ router.get("/:category/:url", async (req, res) => {
   const url = req.params.url;
 
   const post = await Post.findOne({ url }).limit(1);
+  const views = ++post.views;
+
+  await Post.update({ _id: post._id }, { $set: { views } });
 
   res.render("post", {
     post

@@ -10,7 +10,8 @@ const PostSchema = new mongoose.Schema({
   category: String,
   url: String,
   published: { type: Date, default: new Date() },
-  updated: { type: Date, default: new Date() }
+  updated: { type: Date, default: new Date() },
+  views: { type: Number, default: 0 }
 });
 
 PostSchema.index({ title: "text" });

@@ -3,6 +3,14 @@ const { Category } = require("../models/Category");
 const express = require("express");
 const router = express.Router();
 
+router.get("/posts/views", async (req, res) => {
+  const posts = await Post.find({ views: { $gt: 0 } })
+    .sort("-views")
+    .limit(4);
+
+  res.send(posts);
+});
+
 // Get list of categories
 router.get("/categories", async (req, res) => {
   const categories = await Category.find()
