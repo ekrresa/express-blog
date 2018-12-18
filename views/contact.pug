@@ -13,7 +13,7 @@ html
   body
     header.pb-5
       .container
-        include nav
+        include partials/nav
 
 
         .row.justify-content-center
@@ -43,51 +43,6 @@ html
                 button(type="submit" class="btn btn-info") Send
 
         .col-sm-12.col-md-4
-          include aside
-            .row
-              .col-sm-12
-                h4 Subscribe To Our Newsletter
-            
-              .col-sm-12
-                form(action="" method="" class="form-inline")
-                  input(type="email" name="" class="form-control" placeholder="Enter Email...")
-                  button(type="submit" class="btn ml-2") Subscribe
+          include partials/aside
 
-    footer.mt-4.pt-2
-      .container
-        .row
-          .col-md-12
-            h2 AgricVenturesNG
-        .row
-          .col-sm-12.col-md-5
-            p.mb-3 AgricVenturesNG is a blog dedicated to bring the latest News and event on Agriculture happen around Nigeria.
-            p 
-              i.fa.fa-envelope-o
-              span.ml-2
-                a(href="mailto:kelvinekrresa@gmail.com") kelvinekrresa@gmail.com 
-            p 
-              i.fa.fa-phone 
-              span.ml-2 +2347036161822
-          .col-sm-12.col-md-3
-            p
-              a(href="#") Privacy Policy
-            p 
-              a(href="#") Terms &amp; Conditions 
-          .col-sm-12.col-md-4
-            ul.footer-nav
-              li.nav-item
-                a(href="#")
-                  i.fa.fa-facebook-square
-              li.nav-item
-                a(href="#")
-                  i.fa.fa-twitter-square
-              li.nav-item
-                a(href="#")
-                  i.fa.fa-instagram      
-
-        .row
-          .col-sm-12.text-center
-            p Copyright &copy; 2018. Built by Ochuko
-
-    script(src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous")
-    script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous")
+    include partials/footer
