@@ -25,7 +25,7 @@ html
     section.container.mb-4.p-2.shadow-sm
       .row.align-items-center
         .col-sm-12.col-md-6.d-flex.justify-content-center
-          h3 Subscribe To Our Newsletter
+          h3.newsletter Subscribe To Our Newsletter
       
         .col-sm-12.col-md-6.d-flex.justify-content-center
           form(action="/blog/posts/search" method="post")
@@ -52,7 +52,7 @@ html
                         h4.card-title
                           a.text-dark(href=`/blog/${post.category}/${post.url}`)= post.title
                         a.text-dark(href=`/blog/${post.category}/${post.url}`)
-                          p.card-subtitle.mb-2.text-muted!= post.summary
+                          p.card-subtitle.post-summary.mb-2.text-muted!= post.summary
 
           .row.mb-3
               .col-sm-12
@@ -74,7 +74,7 @@ html
                         h4.card-title
                           a.text-dark(href=`/blog/${post.category}/${post.url}`)= post.title
                         a.text-dark(href=`/blog/${post.category}/${post.url}`)
-                          p.card-subtitle.mb-2.text-muted!= post.summary
+                          p.card-subtitle.post-summary.mb-2.text-muted!= post.summary
           - let nextPage = Number(pageNumber + 1)
           .row
             if pageNumber > 1

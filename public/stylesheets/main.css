@@ -209,6 +209,10 @@ footer p a:hover {
   }
   p.lead {
     text-align: center;
+    font-size: 1rem;
+  }
+  h4.card-title {
+    font-size: 1.3rem;
   }
   .contact ul li {
     display: none;
@@ -233,8 +237,27 @@ footer p a:hover {
     display: inline-block;
     margin-right: auto;
   }
-
   .site-header {
     display: none;
+  }
+  h3.newsletter {
+    font-size: 1.5rem;
+  }
+  .post-summary {
+    display: none;
+  }
+  aside {
+    margin-top: 1.5rem;
+  }
+  .archives {
+    display: none;
+  }
+  .disclaimer {
+    margin-top: 1rem;
+  }
+  .footer-nav {
+    justify-content: space-between;
+    padding-left: 0;
+    margin-top: 1rem;
   }
 }
