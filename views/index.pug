@@ -28,9 +28,11 @@ html
           h3 Subscribe To Our Newsletter
       
         .col-sm-12.col-md-6.d-flex.justify-content-center
-          form(action="" method="" class="form-inline")
-            input(type="email" name="" class="form-control" placeholder="Enter Email...")
-            button(type="submit" class="btn ml-2") Subscribe
+          form(action="/blog/posts/search" method="post")
+            .input-group
+              input(type="text" class="form-control" name="email" placeholder="Search here..." aria-label="Search here..." aria-describedby="button-addon2")
+              .input-group-append
+                button(type="submit" class="btn btn-outline-secondary" id="button-addon2") Subscribe
 
     section.container
       .row
