@@ -16,6 +16,10 @@ const PostSchema = new mongoose.Schema({
 
 PostSchema.index({ title: "text" });
 
+PostSchema.virtual("summary").get(function() {
+  let summary = this.content.substring(0, 150) + "...";
+  return summary;
+});
 PostSchema.virtual("date").get(function() {
   let year = moment(this.published).format("YYYY");
   let month = moment(this.published).format("MMMM");
