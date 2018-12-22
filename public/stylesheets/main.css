@@ -149,7 +149,6 @@ aside ul a.btn {
 
 .popular img {
   mix-blend-mode: overlay;
-  filter: grayscale(100%);
   height: 180px;
   width: 100%;
   object-fit: cover;
@@ -255,9 +254,15 @@ footer p a:hover {
   .disclaimer {
     margin-top: 1rem;
   }
+  .footer-summary {
+    display: none;
+  }
   .footer-nav {
     justify-content: space-between;
     padding-left: 0;
     margin-top: 1rem;
+  }
+  article h1 {
+    font-size: 2rem;
   }
 }
