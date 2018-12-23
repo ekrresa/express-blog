@@ -1,5 +1,3 @@
 ****Subscribers (Mailchimp)
 ****Related Post / Fuzzy search
 ****Share buttons under post
-****Logging
-****Error Handling (Try/Catch)

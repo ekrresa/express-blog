@@ -16,7 +16,7 @@ router.get("/", async (req, res) => {
 });
 
 // About page route
-router.get("/about", async (req, res) => {
+router.get("/about", (req, res) => {
   res.render("about");
 });
 

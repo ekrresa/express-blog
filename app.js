@@ -1,4 +1,6 @@
 require("express-async-errors");
+const winston = require("winston");
+const { requestLog } = require("./middleware/winston");
 const error = require("./middleware/errors");
 const path = require("path");
 require("./db");
@@ -13,6 +15,9 @@ const express = require("express");
 const app = express();
 
 const PORT = process.env.PORT || 3000;
+winston.configure({
+  transports: [new winston.transports.Console()]
+});
 
 app.set("view engine", "pug");
 
@@ -25,13 +30,13 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use("/", index);
-app.use("/blog", posts);
+app.use("/", requestLog, index);
+app.use("/blog", requestLog, posts);
 app.use("/aside", aside);
-app.use("/admin", dashboard);
-app.use("/admin/cms", cms);
-app.use("/admin/auth", auth);
+app.use("/admin", requestLog, dashboard);
+app.use("/admin/cms", requestLog, cms);
+app.use("/admin/auth", requestLog, auth);
 
 app.use(error);
 
-app.listen(PORT, () => console.log(`listening on port ${PORT}`));
+app.listen(PORT, () => winston.info(`listening on port ${PORT}`));
