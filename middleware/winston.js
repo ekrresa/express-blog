@@ -9,7 +9,8 @@ const logger = createLogger({
     }),
     format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
   ),
-  transports: new transports.File({ filename: "exceptions.log" })
+  transports: new transports.File({ filename: "exceptions.log" }),
+  exitOnError: false
 });
 
 const request = createLogger({
@@ -21,11 +22,12 @@ const request = createLogger({
     }),
     format.printf(info => `${info.timestamp} ${info.level}: ${info.message}`)
   ),
-  transports: new transports.File({ filename: "logfile.log" })
+  transports: new transports.File({ filename: "logfile.log" }),
+  exitOnError: false
 });
 
 const requestLog = (req, res, next) => {
-  request.info(req.originalUrl);
+  request.info(`${req.method} ${req.originalUrl} `);
   next();
 };
 
