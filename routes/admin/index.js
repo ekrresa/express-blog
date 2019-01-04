@@ -11,6 +11,14 @@ const redirectLogin = (req, res, next) => {
   }
 };
 
+const redirectHome = (req, res, next) => {
+  if (req.session.name) {
+    res.redirect("/admin");
+  } else {
+    next();
+  }
+};
+
 router.get("/", redirectLogin, async (req, res) => {
   const posts = await Post.find()
     .select("title category published url")
@@ -39,15 +47,15 @@ router.get("/category", redirectLogin, (req, res) => {
   res.render("admin/category");
 });
 
-router.get("/login", (req, res) => {
+router.get("/login", redirectHome, (req, res) => {
   res.render("admin/login");
 });
 
-router.get("/register", (req, res) => {
+router.get("/register", redirectHome, (req, res) => {
   res.render("admin/register");
 });
 
-router.get("/password", (req, res) => {
+router.get("/password", redirectHome, (req, res) => {
   res.render("admin/password");
 });
 
