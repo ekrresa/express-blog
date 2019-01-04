@@ -1,9 +1,10 @@
 const Post = require("../models/Post");
+const { requestLog } = require("../middleware/winston");
 const express = require("express");
 const router = express.Router();
 
 // Homepage route
-router.get("/", async (req, res) => {
+router.get("/", requestLog, async (req, res) => {
   const posts = await Post.find().limit(10);
 
   const post1 = posts.slice(0, 3);
@@ -16,17 +17,17 @@ router.get("/", async (req, res) => {
 });
 
 // About page route
-router.get("/about", (req, res) => {
+router.get("/about", requestLog, (req, res) => {
   res.render("about");
 });
 
 // Contact page route
-router.get("/contact", async (req, res) => {
+router.get("/contact", requestLog, async (req, res) => {
   res.render("contact");
 });
 
 // Privacy page route
-router.get("/disclaimer", async (req, res) => {
+router.get("/disclaimer", requestLog, async (req, res) => {
   res.render("disclaimer");
 });
 

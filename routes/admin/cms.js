@@ -2,50 +2,56 @@ const { Category } = require("../../models/Category");
 const Post = require("../../models/Post");
 const { validateCategory, validatePost } = require("../../helpers/validation");
 const { upload } = require("../../middleware/images");
+const { requestLog } = require("../../middleware/winston");
 const express = require("express");
 const router = express.Router();
 
-router.post("/post", upload.single("postImage"), async (req, res) => {
-  if (!req.file) {
-    return res.render("admin/post", { error: "No image selected!" });
-  }
-  const categories = await Category.find()
-    .sort("name")
-    .select("name -_id");
-  req.body.postImage = `/images/${req.file.filename}`;
+router.post(
+  "/post",
+  requestLog,
+  upload.single("postImage"),
+  async (req, res) => {
+    if (!req.file) {
+      return res.render("admin/post", { error: "No image selected!" });
+    }
+    const categories = await Category.find()
+      .sort("name")
+      .select("name -_id");
+    req.body.postImage = `/images/${req.file.filename}`;
 
-  const { value, error } = validatePost(req.body);
-  if (error) {
-    return res.render("admin/post", { error: error.details[0].message });
-  }
+    const { value, error } = validatePost(req.body);
+    if (error) {
+      return res.render("admin/post", { error: error.details[0].message });
+    }
 
-  const url = value.title
-    .toLowerCase()
-    .split(" ")
-    .join("-");
-  const { title, category, content, author, image, thumbnail } = value;
-  const post = new Post({
-    title,
-    category,
-    content,
-    author,
-    image,
-    thumbnail,
-    url
-  });
-
-  try {
-    await post.save();
-    res.render("admin/post", { success: "post added successfully" });
-  } catch (err) {
-    return res.render("admin/post", {
-      categories,
-      error: `failed to save post, ${err}`
+    const url = value.title
+      .toLowerCase()
+      .split(" ")
+      .join("-");
+    const { title, category, content, author, image, thumbnail } = value;
+    const post = new Post({
+      title,
+      category,
+      content,
+      author,
+      image,
+      thumbnail,
+      url
     });
-  }
-});
 
-router.post("/category", async (req, res) => {
+    try {
+      await post.save();
+      res.render("admin/post", { success: "post added successfully" });
+    } catch (err) {
+      return res.render("admin/post", {
+        categories,
+        error: `failed to save post, ${err}`
+      });
+    }
+  }
+);
+
+router.post("/category", requestLog, async (req, res) => {
   const { value, error } = validateCategory(req.body);
   if (error) {
     return res.render("admin/category", { error: error.details[0].message });
@@ -65,7 +71,7 @@ router.post("/category", async (req, res) => {
   }
 });
 
-router.get("/edit/:id", async (req, res) => {
+router.get("/edit/:id", requestLog, async (req, res) => {
   const id = req.params.id;
   const categories = await Category.find()
     .sort("name")
@@ -78,7 +84,7 @@ router.get("/edit/:id", async (req, res) => {
   });
 });
 
-router.post("/update/:id", async (req, res) => {
+router.post("/update/:id", requestLog, async (req, res) => {
   const id = req.params.id;
   const { title, category, body, author } = req.body;
   const url = title
@@ -102,7 +108,7 @@ router.post("/update/:id", async (req, res) => {
   res.redirect("/admin");
 });
 
-router.get("/delete/:id", async (req, res) => {
+router.get("/delete/:id", requestLog, async (req, res) => {
   const id = req.params.id;
   await Post.deleteOne({ _id: id });
   res.redirect("/admin");

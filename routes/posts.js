@@ -1,14 +1,15 @@
 const Post = require("../models/Post");
+const { requestLog } = require("../middleware/winston");
 const express = require("express");
 const router = express.Router();
 
 // Route for /blog
-router.get("/", async (req, res) => {
+router.get("/", requestLog, async (req, res) => {
   res.redirect("/blog/1");
 });
 
 // Route for /blog with pagination
-router.get("/:pageNumber", async (req, res) => {
+router.get("/:pageNumber", requestLog, async (req, res) => {
   const pageNumber = req.params.pageNumber;
   const pageSize = 10;
   const posts = await Post.find()
@@ -24,7 +25,7 @@ router.get("/:pageNumber", async (req, res) => {
 });
 
 // Route to get posts by category
-router.get("/posts/:category", async (req, res) => {
+router.get("/posts/:category", requestLog, async (req, res) => {
   const category = req.params.category;
   const pageNumber = 1;
   let posts = await Post.find({ category }).sort("-published");
@@ -45,7 +46,7 @@ router.get("/posts/:category", async (req, res) => {
 });
 
 // Route to get posts by category with pagination
-router.get("/posts/:category/:pageNumber", async (req, res) => {
+router.get("/posts/:category/:pageNumber", requestLog, async (req, res) => {
   const { pageNumber, category } = req.params;
   const pageSize = 10;
 
@@ -62,7 +63,7 @@ router.get("/posts/:category/:pageNumber", async (req, res) => {
 });
 
 // Route to get single post
-router.get("/:category/:url", async (req, res) => {
+router.get("/:category/:url", requestLog, async (req, res) => {
   const url = req.params.url;
 
   const post = await Post.findOne({ url }).limit(1);
@@ -76,7 +77,7 @@ router.get("/:category/:url", async (req, res) => {
 });
 
 // Route to search for posts
-router.post("/posts/search", async (req, res) => {
+router.post("/posts/search", requestLog, async (req, res) => {
   const { search } = req.body;
   let posts = await Post.find({ $text: { $search: search } }).sort(
     "-published"

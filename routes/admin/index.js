@@ -1,5 +1,6 @@
 const { Category } = require("../../models/Category");
 const Post = require("../../models/Post");
+const { requestLog } = require("../../middleware/winston");
 const express = require("express");
 const router = express.Router();
 
@@ -19,7 +20,7 @@ const redirectHome = (req, res, next) => {
   }
 };
 
-router.get("/", redirectLogin, async (req, res) => {
+router.get("/", requestLog, redirectLogin, async (req, res) => {
   const posts = await Post.find()
     .select("title category published url")
     .sort("-published")
@@ -35,7 +36,7 @@ router.get("/", redirectLogin, async (req, res) => {
   });
 });
 
-router.get("/post", redirectLogin, async (req, res) => {
+router.get("/post", requestLog, redirectLogin, async (req, res) => {
   const categories = await Category.find().select("name -_id");
 
   res.render("admin/post", {
@@ -43,23 +44,23 @@ router.get("/post", redirectLogin, async (req, res) => {
   });
 });
 
-router.get("/category", redirectLogin, (req, res) => {
+router.get("/category", requestLog, redirectLogin, (req, res) => {
   res.render("admin/category");
 });
 
-router.get("/login", redirectHome, (req, res) => {
+router.get("/login", requestLog, redirectHome, (req, res) => {
   res.render("admin/login");
 });
 
-router.get("/register", redirectHome, (req, res) => {
+router.get("/register", requestLog, redirectHome, (req, res) => {
   res.render("admin/register");
 });
 
-router.get("/password", redirectHome, (req, res) => {
+router.get("/password", requestLog, redirectHome, (req, res) => {
   res.render("admin/password");
 });
 
-router.get("/:pageNumber", redirectLogin, async (req, res) => {
+router.get("/:pageNumber", requestLog, redirectLogin, async (req, res) => {
   const postCount = await Post.find().count();
   const categoriesCount = await Category.find().count();
   const pageNumber = req.params.pageNumber;

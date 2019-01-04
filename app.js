@@ -1,6 +1,5 @@
 require("express-async-errors");
 const winston = require("winston");
-const { requestLog } = require("./middleware/winston");
 const error = require("./middleware/errors");
 const path = require("path");
 require("./db");
@@ -32,12 +31,12 @@ app.use(function(req, res, next) {
   next();
 });
 
-app.use("/", requestLog, index);
-app.use("/blog", requestLog, posts);
+app.use("/", index);
+app.use("/blog", posts);
 app.use("/aside", aside);
-app.use("/admin", requestLog, dashboard);
-app.use("/admin/cms", requestLog, cms);
-app.use("/admin/auth", requestLog, auth);
+app.use("/admin", dashboard);
+app.use("/admin/cms", cms);
+app.use("/admin/auth", auth);
 
 app.use(error);
 

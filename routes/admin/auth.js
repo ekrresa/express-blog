@@ -1,10 +1,11 @@
 const bcrypt = require("bcryptjs");
 const User = require("../../models/User");
 const { validateUser, validateLogin } = require("../../helpers/validation");
+const { requestLog } = require("../../middleware/winston");
 const express = require("express");
 const router = express.Router();
 
-router.get("/logout", (req, res) => {
+router.get("/logout", requestLog, (req, res) => {
   req.session.destroy(err => {
     if (err) {
       res.redirect("/admin");
@@ -13,7 +14,7 @@ router.get("/logout", (req, res) => {
   });
 });
 
-router.post("/login", async (req, res) => {
+router.post("/login", requestLog, async (req, res) => {
   const { value, error } = validateLogin(req.body);
   if (error)
     return res.render("admin/login", {
@@ -37,7 +38,7 @@ router.post("/login", async (req, res) => {
   res.redirect("/admin");
 });
 
-router.post("/register", async (req, res) => {
+router.post("/register", requestLog, async (req, res) => {
   const { value, error } = validateUser(req.body);
   if (error)
     return res.render("admin/register", { error: error.details[0].message });
