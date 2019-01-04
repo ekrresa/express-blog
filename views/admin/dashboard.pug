@@ -25,20 +25,22 @@ html(lang="en")
     #wrapper
       // Sidebar
       ul.sidebar.navbar-nav
-        li.nav-item.active
-          a.nav-link(href="/admin") Dashboard
-        li.nav-item.active
-          a.nav-link(href="/admin/post") Create New Post
-        li.nav-item.active
-          a.nav-link(href="/admin/category") Add Category
-        li.nav-item.active
-          a.nav-link(href="#" data-toggle="modal" data-target="#logoutModal") Logout
-        li.nav-item.active
-          a.nav-link(href="/admin/login") Login
-        li.nav-item.active
-          a.nav-link(href="/admin/register") Register
-        li.nav-item.active
-          a.nav-link(href="/admin/password") Forgot Password
+        if session.name
+          li.nav-item.active
+            a.nav-link(href="/admin") Dashboard
+          li.nav-item.active
+            a.nav-link(href="/admin/post") Create New Post
+          li.nav-item.active
+            a.nav-link(href="/admin/category") Add Category
+          li.nav-item.active
+            a.nav-link(href="#" data-toggle="modal" data-target="#logoutModal") Logout
+        else
+          li.nav-item.active
+            a.nav-link(href="/admin/login") Login
+          li.nav-item.active
+            a.nav-link(href="/admin/register") Register
+          li.nav-item.active
+            a.nav-link(href="/admin/password") Forgot Password
 
       block content
 

@@ -3,7 +3,15 @@ const Post = require("../../models/Post");
 const express = require("express");
 const router = express.Router();
 
-router.get("/", async (req, res) => {
+const redirectLogin = (req, res, next) => {
+  if (!req.session.name) {
+    res.redirect("/admin/login");
+  } else {
+    next();
+  }
+};
+
+router.get("/", redirectLogin, async (req, res) => {
   const posts = await Post.find()
     .select("title category published url")
     .sort("-published")
@@ -19,7 +27,7 @@ router.get("/", async (req, res) => {
   });
 });
 
-router.get("/post", async (req, res) => {
+router.get("/post", redirectLogin, async (req, res) => {
   const categories = await Category.find().select("name -_id");
 
   res.render("admin/post", {
@@ -27,7 +35,7 @@ router.get("/post", async (req, res) => {
   });
 });
 
-router.get("/category", (req, res) => {
+router.get("/category", redirectLogin, (req, res) => {
   res.render("admin/category");
 });
 
@@ -43,7 +51,7 @@ router.get("/password", (req, res) => {
   res.render("admin/password");
 });
 
-router.get("/:pageNumber", async (req, res) => {
+router.get("/:pageNumber", redirectLogin, async (req, res) => {
   const postCount = await Post.find().count();
   const categoriesCount = await Category.find().count();
   const pageNumber = req.params.pageNumber;

@@ -61,7 +61,7 @@ router.post("/register", async (req, res) => {
   try {
     await user.save();
     return res.render("admin/register", {
-      success: "User registration successful"
+      success: "User registration successful, Please login"
     });
   } catch (err) {
     return res.render("admin/register", {
