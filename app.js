@@ -12,6 +12,7 @@ const cms = require("./routes/admin/cms");
 const auth = require("./routes/admin/auth");
 const aside = require("./routes/aside");
 const express = require("express");
+const helmet = require("helmet");
 const app = express();
 
 const PORT = process.env.PORT || 3000;
@@ -21,6 +22,7 @@ winston.configure({
 
 app.set("view engine", "pug");
 
+app.use(helmet());
 app.use(session);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
