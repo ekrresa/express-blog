@@ -10,11 +10,11 @@ block content
       if success
         .alert.alert-success.text-center= success
       form(method="post" action="/admin/cms/category")
+        input(type='hidden', name='_csrf', value=csrftoken)
         .form-group.row
           label.col-sm-2.col-form-label(for="category") Category
           .col-sm-6
             input.form-control#category(type="text" name="category" autofocus)
-
         .row
           .col-sm-2
           .col-sm-8

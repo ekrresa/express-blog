@@ -10,6 +10,7 @@ block content
         if success
           .alert.alert-success.text-center= success
         form(action="/admin/auth/login", method="post")
+          input(type='hidden', name='_csrf', value=csrftoken)
           .form-group
             .form-label-group
               input.form-control#inputEmail(type="email" name="email" placeholder="Email address" required autofocus)

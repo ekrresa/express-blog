@@ -15,6 +15,7 @@ block content
 
       if post
         form(action=`/admin/cms/update/${post._id}`, method="post")
+          input(type='hidden', name='_csrf', value=csrftoken)
           .form-group.row
             label.col-sm-2.col-form-label(for="postTitle") Title
             .col-sm-6
@@ -51,6 +52,7 @@ block content
           | } );
       else
         form(action="/admin/cms/post", method="post" enctype="multipart/form-data")
+          input(type='hidden', name='_csrf', value=csrftoken)
           .form-group.row
             label.col-sm-2.col-form-label(for="postTitle") Title
             .col-sm-6

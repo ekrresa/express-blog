@@ -11,6 +11,7 @@ const cms = require("./routes/admin/cms");
 const auth = require("./routes/admin/auth");
 const aside = require("./routes/aside");
 const express = require("express");
+const csrf = require("csurf");
 const helmet = require("helmet");
 const app = express();
 
@@ -26,6 +27,7 @@ app.use(session);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+app.use(csrf());
 app.use(function(req, res, next) {
   res.locals.session = req.session;
   next();

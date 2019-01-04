@@ -38,22 +38,26 @@ router.get("/", requestLog, redirectLogin, async (req, res) => {
 
 router.get("/post", requestLog, redirectLogin, async (req, res) => {
   const categories = await Category.find().select("name -_id");
-
+  const csrftoken = req.csrfToken();
   res.render("admin/post", {
-    categories
+    categories,
+    csrftoken
   });
 });
 
 router.get("/category", requestLog, redirectLogin, (req, res) => {
-  res.render("admin/category");
+  const csrftoken = req.csrfToken();
+  res.render("admin/category", { csrftoken });
 });
 
 router.get("/login", requestLog, redirectHome, (req, res) => {
-  res.render("admin/login");
+  const csrftoken = req.csrfToken();
+  res.render("admin/login", { csrftoken });
 });
 
 router.get("/register", requestLog, redirectHome, (req, res) => {
-  res.render("admin/register");
+  const csrftoken = req.csrfToken();
+  res.render("admin/register", { csrftoken });
 });
 
 router.get("/password", requestLog, redirectHome, (req, res) => {
