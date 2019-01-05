@@ -121,12 +121,16 @@ aside ul a.btn {
   padding: 0;
 }
 
+.popular {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+
 .popular div {
-  height: 180px;
+  height: 270px;
   position: relative;
   background: rgb(31, 73, 77);
   color: white;
-  margin-bottom: 0.3rem;
 }
 
 .popular div a {
@@ -143,13 +147,14 @@ aside ul a.btn {
 }
 
 .popular h6 {
-  padding-left: 0.3rem;
   text-align: center;
+  font-weight: 300;
+  font-size: 1.2rem;
 }
 
 .popular img {
-  mix-blend-mode: overlay;
-  height: 180px;
+  mix-blend-mode: soft-light;
+  height: 100%;
   width: 100%;
   object-fit: cover;
 }
@@ -271,5 +276,14 @@ footer p a:hover {
   }
   .categoryH1 {
     font-size: 2rem;
+  }
+  .border-right {
+    border-right: none !important;
+  }
+  .popular div {
+    height: 170px;
+  }
+  .popular h6 {
+    font-size: 1rem;
   }
 }
