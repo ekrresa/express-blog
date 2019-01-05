@@ -211,7 +211,11 @@ footer p a:hover {
     font-size: 1rem;
   }
   h4.card-title {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
+  }
+  .card-title {
+    padding-right: 0;
+    margin-bottom: 0.4rem;
   }
   .contact ul li {
     display: none;
