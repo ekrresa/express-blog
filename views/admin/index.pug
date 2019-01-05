@@ -81,4 +81,5 @@ block content
     footer.sticky-footer
       .container.my-auto
         .copyright.text-center.my-auto
-          span Copyright © Your Website 2019
+  - let year = new Date().getFullYear() 
+          span Copyright © Your Website #{year}
