@@ -237,7 +237,9 @@ footer p a:hover {
   .navbar-light .navbar-toggler {
     border: 1.5px solid rgb(151, 144, 144);
   }
-
+  article img {
+    height: 150px;
+  }
   .navbar {
     justify-content: flex-end;
   }

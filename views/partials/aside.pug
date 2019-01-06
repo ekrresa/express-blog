@@ -1,14 +1,20 @@
 aside
+  form(action="/blog/posts/search" method="post" class="mb-3")
+    input(type='hidden', name='_csrf', value=csrftoken)
+    .input-group.mb-3
+      input(type="text" class="form-control" name="search" placeholder="Search here..." aria-describedby="search-btn")
+      .input-group-append
+        button(type="submit" class="btn btn-outline-secondary" id="search-btn") Search
+
+  .row.mb-3
+    .col-sm-12
+      .bg-dark
+        p.text-light AD SPACE
   .row.mb-3
     .col-sm-12
       .bg-dark
         p.text-light AD SPACE
 
-  form(action="/blog/posts/search" method="post" class="mb-3")
-    .input-group.mb-3
-      input(type="text" class="form-control" name="search" placeholder="Search here..." aria-label="Search here..." aria-describedby="button-addon2")
-      .input-group-append
-        button(type="submit" class="btn btn-outline-secondary" id="button-addon2") Search
 
   h4.text-capitalize.mb-0.mt-3 Categories
   ul.categories

@@ -33,6 +33,11 @@ app.use(function(req, res, next) {
   next();
 });
 
+app.use(function(req, res, next) {
+  res.locals.csrftoken = req.csrfToken();
+  next();
+});
+
 app.use("/", index);
 app.use("/blog", posts);
 app.use("/aside", aside);
